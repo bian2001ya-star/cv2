@@ -1,0 +1,181 @@
+/* ===== الألوان (غيّرها بسهولة من هنا) ===== */
+:root {
+  --bg: #f6f3ff;
+  --card: #ffffff;
+  --text: #2e2347;
+  --muted: #7d70a0;
+  --accent: #7c3aed;
+  --accent-2: #ec4899;
+  --soft: #e7e0ff;
+  --shadow: 0 20px 50px rgba(124, 58, 237, 0.2);
+}
+
+body.dark {
+  --bg: #14101f;
+  --card: #1f182f;
+  --text: #f3eeff;
+  --muted: #b5a8d6;
+  --accent: #a78bfa;
+  --accent-2: #f472b6;
+  --soft: #2d2445;
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Tajawal", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 60px;
+  transition: background .4s, color .4s;
+  line-height: 1.8;
+}
+
+/* ===== زر الوضع الليلي ===== */
+.theme-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform .3s;
+}
+.theme-btn:hover { transform: rotate(20deg) scale(1.1); }
+
+/* ===== البطاقة ===== */
+.card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--card);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: background .4s;
+}
+
+/* ===== الرأس ===== */
+.hero {
+  text-align: center;
+  padding: 48px 24px 36px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, .85);
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, .25);
+  animation: float 4s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.hero h1 { font-size: 2rem; font-weight: 800; }
+.tagline { opacity: .95; font-size: 1.05rem; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ===== الأقسام ===== */
+.section {
+  padding: 28px 28px 8px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s, transform .7s;
+}
+.section.show { opacity: 1; transform: none; }
+
+.section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  border-bottom: 4px solid var(--accent);
+  padding-bottom: 2px;
+}
+.section p { color: var(--muted); }
+
+/* ===== المهارات ===== */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.skill {
+  flex: 1 1 calc(33% - 12px);
+  min-width: 140px;
+  background: var(--soft);
+  border-radius: 18px;
+  padding: 14px 10px;
+  text-align: center;
+  transition: transform .25s, box-shadow .25s;
+}
+.skill span { display: block; font-size: 1.8rem; }
+.skill b { font-weight: 700; }
+.skill:hover {
+  transform: translateY(-6px) rotate(-1.5deg);
+  box-shadow: 0 10px 20px rgba(124, 58, 237, .25);
+}
+
+/* ===== التواصل ===== */
+.contact { text-align: center; padding-bottom: 28px; }
+.phone {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text) !important;
+  letter-spacing: 1px;
+}
+.wa-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, .35);
+  transition: transform .25s;
+}
+.wa-btn:hover { transform: scale(1.07); }
+
+footer {
+  text-align: center;
+  padding: 18px;
+  font-size: .85rem;
+  color: var(--muted);
+  background: var(--soft);
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.6rem; }
+  .skill { flex: 1 1 calc(50% - 12px); }
+}
